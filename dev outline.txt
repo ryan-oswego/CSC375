@@ -19,11 +19,8 @@ note:
     the overall steps are subject to change and be broken up into smaller steps or the order chnaged
 
 
-
-
-step 0:
-    create repo with the 
-    
+step 0: DONE
+ 
 step 1&2:
     a- create a javafx scene that just displays an empty App
     b- render a 10x10 grid with x and y axis labled
