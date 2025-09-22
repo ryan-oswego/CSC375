@@ -9,13 +9,10 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        // Create a simple root container
         StackPane root = new StackPane();
         
-        // Create a scene with the root container
         Scene scene = new Scene(root, 800, 600);
         
-        // Set up the stage (window)
         primaryStage.setTitle("CSC375 Project");
         primaryStage.setScene(scene);
         primaryStage.show();

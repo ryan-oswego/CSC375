@@ -36,4 +36,3 @@ The program occasionally (for example twice per second) graphically displays sol
 
 Implementation:
 not sure yet, want to go for 30 fps so you can see a fluid change in the grid but might have to reduce to a way lower number (2fps) for performance. 
-

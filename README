@@ -1,0 +1,4 @@
+README
+
+how to run:
+    mvn -f proj1 javafx:run
