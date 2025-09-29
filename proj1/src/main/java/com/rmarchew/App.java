@@ -1,22 +1,20 @@
 package com.rmarchew;
 
 import javafx.application.Application;
+import javafx.scene.layout.*;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        
         BorderPane root = new BorderPane();
-
         GridPane grid = new GridPane();
 
         int size = 10;         // grid dimension (10x10)
-        int cellSize = 50;     // pixels per cell
+        int cellSize = 64;     // pixels per cell
 
         // build a simple size x size grid of cells and keep references
         StackPane[][] cells = new StackPane[size][size];
@@ -31,8 +29,8 @@ public class App extends Application {
         }
 
         // initialize stations (kept separate from the model)
-        int requestedN = 50; // example: change this to vary between 48 and 64
-        for (Station s : StationsInitializer.generateStations(requestedN, size)) {
+        int stationCount = 50;
+        for (Station s : StationsInitializer.generateStations(stationCount, size)) {
             if (s.getY() >= 0 && s.getY() < size && s.getX() >= 0 && s.getX() < size) {
                 StackPane target = cells[s.getY()][s.getX()];
                 target.getChildren().add(StationView.create(s.getType(), Math.min(cellSize, cellSize), s.getColorHex()));
@@ -41,9 +39,9 @@ public class App extends Application {
 
         root.setCenter(grid);
 
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 700, 700);
 
-        primaryStage.setTitle("CSC375 Project - Grid");
+        primaryStage.setTitle("app");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
