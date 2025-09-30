@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.layout.*;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.util.List;
 
 public class App extends Application {
 
@@ -16,7 +17,7 @@ public class App extends Application {
         int size = 10;         // grid dimension (10x10)
         int cellSize = 64;     // pixels per cell
 
-        // build a simple size x size grid of cells and keep references
+        // build size x size grid of cells 
         StackPane[][] cells = new StackPane[size][size];
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
@@ -28,22 +29,33 @@ public class App extends Application {
             }
         }
 
-        // initialize stations (kept separate from the model)
+        // test stations for affinity debug
+        List<Station> low = TestStations.lowAffinity();
+        List<Station> med = TestStations.medAffinity();
+        List<Station> high = TestStations.highAffinity();
+        System.out.println("low test  = " + AffinityCalculator.computeAffinity(low));
+        System.out.println("med test  = " + AffinityCalculator.computeAffinity(med));
+        System.out.println("high test = " + AffinityCalculator.computeAffinity(high));
+
+        // display stations
         int stationCount = 50;
+        //for (Station s : TestStations.lowAffinity()) {
+        //for (Station s : TestStations.medAffinity()) {
+        //for (Station s : TestStations.highAffinity()) {
         for (Station s : StationsInitializer.generateStations(stationCount, size)) {
-            if (s.getY() >= 0 && s.getY() < size && s.getX() >= 0 && s.getX() < size) {
-                StackPane target = cells[s.getY()][s.getX()];
-                target.getChildren().add(StationView.create(s.getType(), Math.min(cellSize, cellSize), s.getColorHex()));
-            }
+            StackPane target = cells[s.getY()][s.getX()];
+            target.getChildren().add(StationView.create(s.getType(), Math.min(cellSize, cellSize), s.getR(), s.getG(), s.getB()));
         }
 
         root.setCenter(grid);
 
         Scene scene = new Scene(root, 700, 700);
-
+    
         primaryStage.setTitle("app");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        
     }
 
 }

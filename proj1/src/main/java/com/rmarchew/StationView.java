@@ -10,44 +10,45 @@ public final class StationView {
 
     private StationView() {}
 
-    // minimal, static factory for station shapes
-    public static Node create(Station.Type type, double size, String colorHex) {
+    // creates nodes for the stations 
+    public static Node create(Station.Type type, double size, int r, int g, int b) {
         double s = Math.max(4, size);
-        Color fill = Color.web(colorHex != null && !colorHex.isEmpty() ? colorHex : "#FF0000");
+        Color fill = Color.rgb(r, g, b);
         Color stroke = Color.BLACK;
         switch (type) {
             case SQUARE: {
-                Rectangle r = new Rectangle(s, s);
-                r.setFill(fill);
-                r.setStroke(stroke);
-                r.setStrokeWidth(1);
-                return r;
+                Rectangle rectangle = new Rectangle(s, s);
+                rectangle.setFill(fill);
+                rectangle.setStroke(stroke);
+                rectangle.setStrokeWidth(1);
+                return rectangle;
             }
             case CIRCLE: {
-                Circle c = new Circle(s / 2.0);
-                c.setFill(fill);
-                c.setStroke(stroke);
-                c.setStrokeWidth(1);
-                return c;
+                Circle circle = new Circle(s / 2.0);
+                circle.setFill(fill);
+                circle.setStroke(stroke);
+                circle.setStrokeWidth(1);
+                return circle;
             }
             case TRIANGLE: {
-                Polygon p = new Polygon();
-                p.getPoints().addAll(0.0, s, s/2.0, 0.0, s, s);
-                p.setFill(fill);
-                p.setStroke(stroke);
-                p.setStrokeWidth(1);
-                return p;
+                Polygon triangle = new Polygon();
+                triangle.getPoints().addAll(0.0, s, s/2.0, 0.0, s, s);
+                triangle.setFill(fill);
+                triangle.setStroke(stroke);
+                triangle.setStrokeWidth(1);
+                return triangle;
             }
             case DIAMOND: {
-                Polygon d = new Polygon();
-                d.getPoints().addAll(s/2.0, 0.0, s, s/2.0, s/2.0, s, 0.0, s/2.0);
-                d.setFill(fill);
-                d.setStroke(stroke);
-                d.setStrokeWidth(1);
-                return d;
+                Polygon diamond = new Polygon();
+                diamond.getPoints().addAll(s/2.0, 0.0, s, s/2.0, s/2.0, s, 0.0, s/2.0);
+                diamond.setFill(fill);
+                diamond.setStroke(stroke);
+                diamond.setStrokeWidth(1);
+                return diamond;
             }
             default:
                 return null;
         }
     }
+
 }

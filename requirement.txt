@@ -4,10 +4,10 @@ There are N stations (N at least 48) and M (M at least N) spots to place them on
 The N stations come in F (at least 4) types representing their function. The different types may have different shapes, occupying multiple adjacent spots. 
 
 Implementation:
-stations: 64
+stations: 48-64
 spots: 100
 types(function): circle, square, triangle, diamond
-extra: each station will have a randomly generated color
+extra: each station will have a randomly generated color (maybe use this for affinity)
 
 
 
@@ -17,7 +17,8 @@ with possibly different maximum values based on capacity or rate.
 The goal is to maximize total affinity. (For some examples, see ELOPE: https://sid2697.github.io/external_pages/ELOPE.html) 
 
 Implementation:
-not sure yet and not worried about it at this point
+the closer the same types of stations are (clustered) the higher the affinity 
+(maybe something with colors)
 
 
 

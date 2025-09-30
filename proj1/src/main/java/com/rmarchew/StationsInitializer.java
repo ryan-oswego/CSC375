@@ -16,15 +16,15 @@ public final class StationsInitializer {
         return values[RNG.nextInt(values.length)];
     }
 
-    // helper method to generate random color hex string
-    private static String randomColorHex() {
+    // helper method to generate random RGB components
+    private static int[] randomRGB() {
         int r = RNG.nextInt(256);
         int g = RNG.nextInt(256);
         int b = RNG.nextInt(256);
-        return String.format("#%02X%02X%02X", r, g, b);
+        return new int[]{r, g, b};
     }
 
-    // Generate n stations onto grid
+    // generate n stations onto grid
     public static List<Station> generateStations(int stationCount, int gridSize) {
         int min = 48, max = 64;
         stationCount = Math.max(min, Math.min(max, stationCount));
@@ -46,8 +46,8 @@ public final class StationsInitializer {
             int x = pos % gridSize;
             int y = pos / gridSize;
             Station.Type t = randomType();
-            String color = randomColorHex();
-            list.add(new Station(t, x, y, color));
+            int[] rgb = randomRGB();
+            list.add(new Station(t, x, y, rgb[0], rgb[1], rgb[2]));
         }
 
         return list;
