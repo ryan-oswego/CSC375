@@ -47,7 +47,7 @@ public final class StationsInitializer {
             int y = pos / gridSize;
             Station.Type t = randomType();
             int[] rgb = randomRGB();
-            list.add(new Station(t, x, y, rgb[0], rgb[1], rgb[2]));
+            list.add(new Station(i, t, x, y, rgb[0], rgb[1], rgb[2]));
         }
 
         return list;

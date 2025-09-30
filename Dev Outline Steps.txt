@@ -1,6 +1,6 @@
 
 
----step 0: get github setup so that i can work on this on my laptop and desktop
+---step 0: setup github
 ---step 1: draw grid 
 ---step 2: initialize stations
 ---step 3: render stations on grid
